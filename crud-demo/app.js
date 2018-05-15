@@ -4,6 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// load env
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").load();
+}
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -44,7 +49,7 @@ const user = process.env.MDB_USER;
 const passwd = process.env.MDB_PASSWORD;
 
 mongoose
-  .connect(`mongodb://${user}:${passwd}@ds123770.mlab.com:23770/is445`)
+  .connect(`mongodb://${user}:${passwd}@ds223760.mlab.com:23760/crud-project`)
   .then(() => console.log("connection successful"))
   .catch(err => console.error(err));
 
